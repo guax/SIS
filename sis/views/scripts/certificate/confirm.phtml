@@ -1,0 +1,21 @@
+<h1>Confirmação de Comparecimento</h1>
+
+<table>
+    <tr>
+        <th>Email</th>
+        <th>Nome</th>
+        <th>Ação</th>
+    </tr>
+<?php foreach ($this->users as $user): ?>
+    <tr>
+        <td><?php echo $user['email']; ?></td>
+        <td><?php echo $user['nome']; ?></td>
+        <td>
+            <form method="post">
+                <input name="userId" type="hidden" value="<?php echo $user['id']; ?>" />
+                <input type="submit" value="confirmar" />
+            </form>
+        </td>
+    </tr>
+<? endforeach; ?>
+</table>

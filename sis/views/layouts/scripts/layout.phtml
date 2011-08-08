@@ -1,0 +1,82 @@
+<?php echo $this->doctype() ?>
+<html>
+<head>
+    <link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/css/main.css" type="text/css" />
+    <?php echo $this->headTitle() ?>
+    <?php echo $this->headLink() ?>
+    <?php echo $this->headMeta() ?>
+    <?php echo $this->headStyle() ?>
+    <?php echo $this->headScript() ?>
+</head>
+<body>
+    <div id="header">
+        <h1><a href="<?php echo $this->baseUrl()?>"><img alt="Solisc 2009" src="<?php echo $this->baseUrl(); ?>/images/logo2.png" /></a></h1>
+    </div>
+    <?php if(!isset($this->sidebar) || $this->sidebar == true) { ?>
+    <div id="sidebar">
+        <?php
+        if(!Zend_Auth::getInstance()->hasIdentity() && Zend_Controller_Front::getInstance()->getRequest()->getControllerName() != "auth") {
+            echo $this->render("loginform.phtml");
+        }
+        else if(Zend_Controller_Front::getInstance()->getRequest()->getControllerName() != "auth") {
+            $sis = new Sis_Sis();
+            $user = $sis->buscarInscricaoEmail(Zend_Auth::getInstance()->getIdentity()->email);
+            ?>
+            <h5>Bem vindo <?=$user->forma_tratamento?> <?=$user->nome?></h5>
+            <ul>
+                <li>
+                    <a href="<?=$this->baseUrl();?>/cadastro/editar">
+                        <img src="<?php echo $this->baseUrl(); ?>/images/user_edit.png" alt="" />
+                        Dados Pessoais
+                    </a>
+                </li>
+                <li>
+                    <a href="<?=$this->baseUrl();?>/cadastro/senha">
+                        <img src="<?php echo $this->baseUrl(); ?>/images/key.png" alt="" />
+                        Alterar Senha
+                    </a>
+                </li>
+                <li>
+                    <a href="<?=$this->baseUrl();?>/caravana/nova">
+                        <img src="<?php echo $this->baseUrl(); ?>/images/car.png" alt="" />
+                        Cadastrar Caravana
+                    </a>
+                </li>
+                <li>
+                    <a href="<?=$this->baseUrl();?>/billing/">
+                        <img src="<?php echo $this->baseUrl(); ?>/images/money.png" alt="" />
+                        Pagamento
+                    </a>
+                </li>
+                <li>
+                    <a href="<?=$this->baseUrl();?>/certificate/">
+                        <img src="<?php echo $this->baseUrl(); ?>/images/certificate.png" alt="" />
+                        Certificado
+                    </a>
+                </li>
+                <?php
+                    if( Zend_Auth::getInstance()->getStorage()->read()->admin == '1' ) {
+                        echo "<li><a href='".$this->baseUrl()."/pagamentos/'><img src=\"" . $this->baseUrl() . "/images/money.png\" alt=\"\" /> Pagamentos</a></li>";
+                        echo "<li><a href='".$this->baseUrl()."/certificate/confirm'><img src=\"" . $this->baseUrl() . "/images/certificate.png\" alt=\"\" /> Confirmar Participação</a></li>";
+                        echo "<li><a href='".$this->baseUrl()."/grupos/'><img src=\"" . $this->baseUrl() . "/images/group.png\" alt=\"\" /> Grupos / Descontos</a></li>";
+                    }
+                ?>
+                <li>
+                    <a href="<?=$this->baseUrl();?>/auth/logout">
+                        <img src="<?php echo $this->baseUrl(); ?>/images/cross.png" alt="" />
+                        Sair
+                    </a>
+                </li>
+            </ul>
+        <?php } ?>
+    </div>
+    <?php } ?>
+    <div id="content">
+        <?php echo $this->layout()->content ?>
+    </div>
+    <div id="footer">
+        <p>SIS - Sistema de Inscrições <a href="http://www.solisc.org.br/">SoLiSC</a></p>
+        <p>&copy;SoLiSC <?=date('Y');?></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+SIS 1.3:
+    New:
+        Edição de grupo de usuários.
+        Adicionado icones ao menu.
+
+SIS 1.2:
+    New:
+        Grupos de Desconto: Cadastro de grupos para concessão de descontos
+fornecidos por códigos de desconto.
+    Bugfixes:
+        Correção de possivel bug na atualização de inscrições quando pagamento
+já se encontra quitado.
+        Correção de politica de pagamento para usuários organizadores de
+caravanas.
+
+SIS 1.1:
+    Suporte a inscrição de caravana
+    Adicionado sistemas de ACL para controle de acesso administrativo.
+
+SIS 1.0:
+    Primeira versão, suporte a inscrições.

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<forms>
+    <promocode>
+        <elements>
+            <code>
+                <type>text</type>
+                <options>
+                    <label>Código</label>
+                    <required>true</required>
+                    <validators>
+                        <email>
+                            <validator>Alnum</validator>
+                        </email>
+                    </validators>
+                </options>
+            </code>
+            <submit>
+                <type>submit</type>
+                <options>
+                    <label>Requisitar Desconto</label>
+                </options>
+            </submit>
+        </elements>
+    </promocode>
+</forms>

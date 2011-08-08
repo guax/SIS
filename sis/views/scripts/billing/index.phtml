@@ -1,0 +1,44 @@
+<h1>Pagamento</h1>
+<?php if( $this->status == Sis_Payment::PAID ): ?>
+
+<p>Seu pagamento já foi confirmado. Obrigado e bom congresso.</p>
+
+<?php elseif( $this->status == Sis_Payment::CLOSED ): ?>
+
+<p>Os pagamentos foram encerrados. Sua inscrição deverá ser paga na hora do evento.</p>
+
+<?php elseif( $this->status == Sis_Payment::OPEN ): ?>
+
+<p>Seu pagamento está sendo processado, se por algum motivo este não for
+    confirmado até a data do evento basta levar o comprovante do pagamento.
+Você receberá um email confirmando o recebimento.</p>
+
+<p>Caso você seja o organizador de uma caravana sua inscrição será confirmada após
+as outras pessoas efetuarem as suas respectivas inscrições.</p>
+
+<?php else: ?>
+<p>Os pagamentos do SoLiSC são feitos via PagSeguro, é uma forma segura de
+efetuar o pagamento de diversas formas via internet.</p>
+
+<h2>Códigos de Desconto</h2>
+<p>Caso você possua algum código de desconto, por favor informe antes de efetuar
+    o pagamento no PagSeguro. Caso o valor do código seja superior ao valor que
+    seria cobrado normalmente, o menor valor permanescerá.
+</p>
+
+<?php echo $this->promocode_form; ?>
+
+<h2>Importante</h2>
+<p>Caso o pagamento não seja confirmado até a data do evento leve com você o
+comprovante de pagamento impresso.</p>
+
+<p>Valor: <strong>R$<?php echo $this->value; ?></strong> - <?php echo $this->category; ?></p>
+
+<p>Clique no botão abaixo para finalizar o pagamento.</p>
+<?php
+$pag = $this->pag;
+if (!is_null($pag)) {
+    echo $pag;
+}
+
+endif;

@@ -1,0 +1,62 @@
+<h1>Grupos de Participantes</h1>
+<p>Aqui podem ser cadastrados grupos de participantes para concessão de descontos.
+Os descontos podem ser percentuais ou em valor definido. Cada grupo possui um
+código de desconto que deve ser usado para as inscrições do grupo. É possível
+definir numero máximo de inscrições por grupo assim como a data limite para as
+inscrições feitas para esse grupo.</p>
+<p>Um grupo com data limite e sem limite de inscritos por exemplo pode ser usado em
+promoções.</p>
+
+<p><a class="button" href="<?php echo $this->baseUrl(); ?>/grupos/cadastrar/"><img src="<?php echo $this->baseUrl(); ?>/images/add.png" /> Cadastrar novo grupo</a></p>
+
+<h2>Grupos Cadastrados</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Grupo</th>
+            <th>Código de Inscrição</th>
+            <th>Inscritos/Limite</th>
+            <th>Desconto</th>
+            <th>Data Limite</th>
+        </tr>
+    </thead>
+    <?php foreach ($this->grupos as $grupo) { ?>
+        <tr>
+            <td>
+                <strong><?php echo $grupo->getNome();?></strong>
+                <p><?php echo $grupo->getDescricao();?></p>
+                <a href="<?php echo $this->baseUrl(); ?>/grupos/editar/<?php echo $grupo->getId();?>">Editar</a>
+            </td>
+            <td><strong><span style="color:green"><?php echo $grupo->getCodigo();?></span></strong></td>
+            <td>
+                <?php
+                if($grupo->isFull()) echo '<strong style="color:red;">';
+                echo count($grupo->getListaParticipantes());?> / <?php echo $grupo->getLimiteParticipantes();
+                if($grupo->isFull()) echo '</strong>';
+                ?>
+            </td>
+            <td>
+                <?php
+                if($grupo->getValor() !== null) {
+                    echo str_replace(".", ",", sprintf("R$ %0.2f", $grupo->getValor()));
+                }
+                else {
+                    echo $grupo->getDesconto() . "%";
+                }
+                ?>
+            </td>
+            <td>
+                <?php
+                if($grupo->getDataLimite() !== null) {
+                    if(!$grupo->isValid()) echo '<strong style="color:red;">';
+                    echo date("d/m/Y",$grupo->getDataLimite());
+                    if(!$grupo->isValid()) echo '</strong>';
+                }
+                else {
+                    echo "- -";
+                }
+                ?>
+            </td>
+        </tr>
+    <?php } ?>
+</table>

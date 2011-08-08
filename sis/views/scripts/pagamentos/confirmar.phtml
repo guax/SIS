@@ -1,0 +1,20 @@
+<h1>Confirmar Pagamento de Inscrição</h1>
+<p>Confirmar pagamento para:</p>
+<ul>
+    <li><?php echo $this->participante->nome;?></li>
+    <li><?php echo $this->participante->email;?></li>
+    <li><?php printf("R$ %.2f",$this->participante->valor_pagamento);?></li>
+</ul>
+
+<?php
+if($this->status != "quitado") {
+?>
+<form action="<?php echo $this->baseUrl();?>/pagamentos/confirmar/<?php echo $this->participante->id;?>" method="post">
+    <p><a href="<?php echo $this->baseUrl();?>/pagamentos/abertos/"><input type="button" value="Cancelar"></a> <input type="submit" value="Confirmar Pagamento"></p>
+</form>
+<?php
+}
+else {
+    echo '<h2><span style="color:green">Pagamento Quitado</span></h2>';
+}
+?>

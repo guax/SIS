@@ -1,0 +1,12 @@
+<h1>Pagamentos</h1>
+<h2>Ações</h2>
+<ul>
+    <li><a href="<?echo $this->baseUrl();?>/pagamentos/abertos/">Listar pagamentos em aberto</a></li>
+    <li><a href="<?echo $this->baseUrl();?>/pagamentos/importcsv/">Importar CSV para quitação</a></li>
+    <li>Sustar pagamento</li>
+</ul>
+<h2>Estatísticas</h2>
+<ul>
+    <li><? echo $this->pgtos_efetuados ?> pagamentos efetuados</li>
+    <li><? echo $this->pgtos_abertos ?> pagamentos em aberto</li>
+</ul>

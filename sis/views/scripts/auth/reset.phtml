@@ -1,0 +1,10 @@
+<?php if($this->invalidhash === true): ?>
+
+<h1>Hash Inválido</h1>
+<p><a href="<?php echo $this->baseUrl(); ?>/auth/login">Voltar</a></p>
+
+<?php else: ?>
+
+<?php echo $this->form; ?>
+
+<?php endif; ?>

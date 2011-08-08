@@ -1,0 +1,25 @@
+<h1>Confirmar Pagamento</h1>
+<?php if( $this->inscricoesAbertas ): ?>
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>E-Mail</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($this->inscricoesAbertas as $participante): ?>
+        <tr>
+            <td><?php echo $participante->nome;?></td>
+            <td><?php echo $participante->email;?></td>
+            <td><a href="<?php echo $this->baseUrl();?>/pagamentos/confirmar/<?php echo $participante->id;?>">Confirmar pagamento</a></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+
+<?php else: ?>
+<p class="failure">Nenhuma inscrição em aberto.</p>
+<p><a href="<?php echo $this->baseUrl(); ?>/pagamentos/">Voltar</a></p>
+<?php endif; ?>

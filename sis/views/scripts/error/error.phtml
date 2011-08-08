@@ -1,0 +1,20 @@
+<h1><?= $this->title ?></h1>
+<p><?= $this->message ?></p>
+
+<? if ('development' == APPLICATION_ENV): ?>
+
+<h3>Exception information:</h3>
+<p>
+    <b>Classe:</b> <?= get_class($this->exception) ?><br />
+    <b>Message:</b> <?= $this->exception->getMessage() ?>
+</p>
+
+<h3>Stack trace:</h3>
+<pre><?= $this->exception->getTraceAsString() ?>
+</pre>
+
+<h3>Request Parameters:</h3>
+<pre><? var_dump($this->request->getParams()) ?>
+</pre>
+
+<? endif ?>

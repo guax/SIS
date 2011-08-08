@@ -1,0 +1,125 @@
+<?php
+$this->headScript()->appendFile($this->baseUrl() . '/javascript/prototype.js', $type = 'text/javascript', $attrs = array());
+$this->headScript()->appendFile($this->baseUrl() . '/javascript/jsvalidate.js', $type = 'text/javascript', $attrs = array());
+?>
+
+<h1>Nova Inscrição</h1>
+
+<form method="post" action="cadastro/novo">
+    <h2>Identificação</h2>
+    <dl>
+        <dt><label for="email">E-Mail</label></dt>
+        <dd><input type="text" name="email" id="email" class="required validate-email" /></dd>
+    </dl>
+
+    <dl>
+        <dt><label for="forma_tratamento">Forma de Tratamento</label></dt>
+        <dd><input type="text" name="forma_tratamento" id="forma_tratamento" /></dd>
+    </dl>
+
+    <dl>
+        <dt><label for="nome">Nome</label></dt>
+        <dd><input type="text" name="nome" id="nome" class="required" /></dd>
+    </dl>
+
+    <dl>
+        <dt><label for="sexo">Sexo</label></dt>
+        <dd>
+            <select id="sexo" name="sexo">
+                <option value="M">Masculino</option>
+                <option value="F">Feminino</option>
+            </select>
+        </dd>
+    </dl>
+
+    <dl>
+        <dt><label for="tipo_doc">Tipo de Documento</label></dt>
+        <dd><input type="text" name="tipo_doc" id="tipo_doc" /></dd>
+    </dl>
+
+    <dl>
+        <dt><label for="num_doc">Numero Documento</label></dt>
+        <dd><input type="text" name="num_doc" id="num_doc" /></dd>
+    </dl>
+
+    <h2>Endereço</h2>
+    <dl>
+        <dt><label for="pais">País</label></dt>
+        <dd><input type="text" name="pais" id="pais" /></dd>
+    </dl>
+
+    <dl>
+        <dt><label for="uf">Estado</label></dt>
+        <dd><input type="text" name="uf" id="uf" /></dd>
+    </dl>
+
+    <dl>
+        <dt><label for="cidade">Cidade</label></dt>
+        <dd><input type="text" name="cidade" id="cidade" /></dd>
+    </dl>
+
+    <dl>
+        <dt><label for="cep">CEP</label></dt>
+        <dd><input type="text" name="cep" id="cep"  class="validate-number" /> <span class='note'>somente numeros</span></dd>
+    </dl>
+
+    <dl>
+        <dt><label for="logradouro">Logradouro</label></dt>
+        <dd><input type="text" name="logradouro" id="logradouro" /></dd>
+    </dl>
+
+    <dl>
+        <dt><label for="bairro">Bairro</label></dt>
+        <dd><input type="text" name="bairro" id="bairro" /></dd>
+    </dl>
+
+    <h2>Inscrição</h2>
+    <dl>
+        <dt><label>Tipo Inscrição</label></dt>
+        <dd>
+            <input type="radio" name="insc_type" value="normal" id="insc_type_normal" checked="checked" onclick="$('dados_estudante').hide()" /><label for="insc_type_normal">Normal</label>
+            <input type="radio" name="insc_type" value="estudante" id="insc_type_estudante" onclick="$('dados_estudante').show(); $('inst_ensino').enable()" /><label for="insc_type_estudante">Estudante</label>
+        </dd>
+    </dl>
+    <div id="dados_estudante" style="display:none;">
+        <dl>
+            <dt><label for="inst_ensino">Instituição de Ensino</label></dt>
+            <dd><input type="text" name="inst_ensino" id="inst_ensino" /></dd>
+        </dl>
+
+        <dl>
+            <dt><label for="curso">Curso</label></dt>
+            <dd><input type="text" name="curso" id="curso" /></dd>
+        </dl>
+
+        <dl>
+            <dt><label for="nivel_ensino">Nível de Ensino</label></dt>
+            <dd>
+                <select id="nivel_ensino" name="nivel_ensino">
+                    <option value="basico">Básico</option>
+                    <option value="medio">Médio</option>
+                    <option value="superior">Superior</option>
+                </select>
+            </dd>
+        </dl>
+    </div>
+    <dl>
+        <dt><label for="empresa">Empresa</label></dt>
+        <dd><input type="text" name="empresa" id="empresa" /></dd>
+    </dl>
+
+    <dl>
+        <dt><label for="cargo">Cargo</label></dt>
+        <dd><input type="text" name="cargo" id="cargo" /></dd>
+    </dl>
+
+    <dl>
+        <dt><label for="cod_desconto">Código de Desconto</label></dt>
+        <dd><input type="text" name="cod_desconto" id="cod_desconto" /></dd>
+    </dl>
+
+<dl>
+    <dt>&nbsp;</dt>
+    <dd><input type="submit" value="Enviar" /></dd>
+</dl>
+</form>

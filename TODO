@@ -1,0 +1,6 @@
+TODO:
+Terminar a implementação da tela para confirmação de pagamentos.
+Suporte a cancelamento de pagamento.
+Batch update para confirmação de pagamentos
+Reformar base de dados e biblioteca de objetos
+Validação em todos os formulários.

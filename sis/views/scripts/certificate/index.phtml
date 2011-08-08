@@ -1,0 +1,16 @@
+<h1>Emissão de Certificado</h1>
+
+<?php if( $this->valid ): ?>
+
+<p>Clique no link abaixo para gerar o PDF com o seu certificado. Ele poderá ser
+    validado posteriormente pelo link descrito no próprio pdf.</p>
+
+<button onclick="location.href='<?php echo $this->baseUrl(); ?>/certificate/download/certificado.pdf'">Baixar Certificado</button>
+
+<?php else: ?>
+
+<p>Sua participação no evento não foi confirmada em nosso sistema.</p>
+
+<?php endif; ?>
+
+<p>Em caso de dúvidas envie email para <a href="mailto:contato@solisc.org.br">contato@solisc.org.br</a></p>

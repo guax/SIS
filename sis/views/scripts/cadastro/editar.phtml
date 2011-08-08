@@ -1,0 +1,126 @@
+<?php
+$this->headScript()->appendFile($this->baseUrl() . '/javascript/prototype.js', $type = 'text/javascript', $attrs = array());
+$this->headScript()->appendFile($this->baseUrl() . '/javascript/jsvalidate.js', $type = 'text/javascript', $attrs = array());
+
+if(isset($this->msg)) {
+    echo "<p class='$this->msgclass' >$this->msg</p>";
+}
+?>
+
+<h1>Editar Informações</h1>
+
+<?php $participante = $this->participante; ?>
+
+<form method="post" action="<?=$this->baseUrl();?>/cadastro/editar">
+    <h2>Identificação</h2>
+    <dl>
+        <dt><label for="email">E-Mail</label></dt>
+        <dd><?=$participante->email?></dd>
+    </dl>
+
+    <dl>
+        <dt><label for="forma_tratamento">Forma de Tratamento</label></dt>
+        <dd><input value="<?=$participante->forma_tratamento?>" type="text" name="forma_tratamento" id="forma_tratamento" /></dd>
+    </dl>
+
+    <dl>
+        <dt><label for="nome">Nome</label></dt>
+        <dd><input value="<?=$participante->nome?>" type="text" name="nome" id="nome" class="required" /></dd>
+    </dl>
+
+    <dl>
+        <dt><label for="sexo">Sexo</label></dt>
+        <dd>
+            <select id="sexo" name="sexo">
+                <option value="M" <?=($participante->sexo=='M')?'selected="selected"':''?>>Masculino</option>
+                <option value="F" <?=($participante->sexo=='F')?'selected="selected"':''?>>Feminino</option>
+            </select>
+        </dd>
+    </dl>
+
+    <dl>
+        <dt><label for="tipo_doc">Tipo de Documento</label></dt>
+        <dd><input value="<?=$participante->tipo_doc?>" type="text" name="tipo_doc" id="tipo_doc" /></dd>
+    </dl>
+
+    <dl>
+        <dt><label for="num_doc">Numero Documento</label></dt>
+        <dd><input value="<?=$participante->num_doc?>" type="text" name="num_doc" id="num_doc" /></dd>
+    </dl>
+
+    <h2>Endereço</h2>
+    <dl>
+        <dt><label for="pais">País</label></dt>
+        <dd><input value="<?=$participante->pais?>" type="text" name="pais" id="pais" /></dd>
+    </dl>
+
+    <dl>
+        <dt><label for="uf">Estado</label></dt>
+        <dd><input value="<?=$participante->uf?>" type="text" name="uf" id="uf" /></dd>
+    </dl>
+
+    <dl>
+        <dt><label for="cidade">Cidade</label></dt>
+        <dd><input value="<?=$participante->cidade?>" type="text" name="cidade" id="cidade" /></dd>
+    </dl>
+
+    <dl>
+        <dt><label for="cep">CEP</label></dt>
+        <dd><input value="<?=$participante->cep?>" type="text" name="cep" id="cep"  class="validate-number" /> <span class='note'>somente numeros</span></dd>
+    </dl>
+
+    <dl>
+        <dt><label for="logradouro">Logradouro</label></dt>
+        <dd><input value="<?=$participante->logradouro?>" type="text" name="logradouro" /></dd>
+    </dl>
+
+    <dl>
+        <dt><label for="bairro">Bairro</label></dt>
+        <dd><input value="<?=$participante->bairro?>" type="text" name="bairro" id="bairro" /></dd>
+    </dl>
+
+    <h2>Inscrição</h2>
+    <dl>
+        <dt><label>Tipo Inscrição</label></dt>
+        <dd>
+            <input <?=(!$participante->estudante)?'checked="checked"':''?> type="radio" name="insc_type" value="normal" id="insc_type_normal" checked="checked" onclick="$('dados_estudante').hide()" /><label for="insc_type_normal">Normal</label>
+            <input <?=($participante->estudante)?'checked="checked"':''?> type="radio" name="insc_type" value="estudante" id="insc_type_estudante" onclick="$('dados_estudante').show(); $('inst_ensino').enable()" /><label for="insc_type_estudante">Estudante</label>
+        </dd>
+    </dl>
+    <div id="dados_estudante" <?=(!$participante->estudante)?'style="display:none;"':''?>>
+        <dl>
+            <dt><label for="inst_ensino">Instituição de Ensino</label></dt>
+            <dd><input value="<?=$participante->inst_ensino?>" type="text" name="inst_ensino" id="inst_ensino" class="validate-alphanum" /></dd>
+        </dl>
+
+        <dl>
+            <dt><label for="curso">Curso</label></dt>
+            <dd><input value="<?=$participante->curso?>" type="text" name="curso" id="curso" /></dd>
+        </dl>
+
+        <dl>
+            <dt><label for="nivel_ensino">Nível de Ensino</label></dt>
+            <dd>
+                <select id="nivel_ensino" name="nivel_ensino">
+                    <option <?=($participante->nivel_ensino=='basico')?'selected="selected"':''?> value="basico">Básico</option>
+                    <option <?=($participante->nivel_ensino=='medio')?'selected="selected"':''?> value="medio">Médio</option>
+                    <option <?=($participante->nivel_ensino=='superior')?'selected="selected"':''?> value="superior">Superior</option>
+                </select>
+            </dd>
+        </dl>
+    </div>
+    <dl>
+        <dt><label for="empresa">Empresa</label></dt>
+        <dd><input value="<?=$participante->empresa?>" type="text" name="empresa" id="empresa" /></dd>
+    </dl>
+
+    <dl>
+        <dt><label for="cargo">Cargo</label></dt>
+        <dd><input value="<?=$participante->cargo?>" type="text" name="cargo" id="cargo" /></dd>
+    </dl>
+
+<dl>
+    <dt>&nbsp;</dt>
+    <dd><input type="submit" value="Enviar" /></dd>
+</dl>
+</form>

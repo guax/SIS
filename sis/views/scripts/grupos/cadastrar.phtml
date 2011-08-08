@@ -1,0 +1,44 @@
+<?php
+$this->headScript()->appendFile($this->baseUrl() . '/javascript/prototype.js', $type = 'text/javascript', $attrs = array());
+$this->headScript()->appendFile($this->baseUrl() . '/javascript/jsvalidate.js', $type = 'text/javascript', $attrs = array());
+?>
+
+<h1>Cadastro de Grupo</h1>
+
+<form method="post" action="<?php echo $this->baseUrl(); ?>/grupos/cadastrar/">
+    <dl>
+        <dt><label for="nome">Nome</label></dt>
+        <dd><input type="text" name="nome" id="nome" class="required" /></dd>
+    </dl>
+    <dl>
+        <dt><label for="descricao">Descrição</label></dt>
+        <dd><textarea id="descricao" name="descricao"></textarea></dd>
+    </dl>
+    <dl>
+        <dt><label>Tipo</label></dt>
+        <dd>
+            <input type="radio" name="tipo" value="percentual" id="percentual" checked="checked" onclick="$('fe_desconto').show();$('fe_valor').hide();" /><label for="percentual">Percentual</label>
+            <input type="radio" name="tipo" value="valor" id="valor" onclick="$('fe_desconto').hide();$('fe_valor').show();" /><label for="valor">Valor Fixo</label>
+        </dd>
+    </dl>
+    <dl id="fe_desconto">
+        <dt><label for="desconto">% de Desconto</label></dt>
+        <dd><input type="text" name="desconto" id="desconto" /> <small>0-100</small></dd>
+    </dl>
+    <dl id="fe_valor" style="display:none">
+        <dt><label for="valor">Valor Fixo</label></dt>
+        <dd><input type="text" name="valor" id="valor" /> <small>ex: 25,00</small></dd>
+    </dl>
+    <dl>
+        <dt><label for="limite">N&ordm; Max. de Participantes</label></dt>
+        <dd><input type="text" name="limite" id="limite" class="required" /> <small>0 para ilimitado</small></dd>
+    </dl>
+    <dl>
+        <dt><label for="dataLimite">Data Limite</label></dt>
+        <dd><input type="text" name="dataLimite" id="dataLimite" class="validate-date-au" /> <small>Formato: dd/mm/yyyy</small></dd>
+    </dl>
+    <dl>
+        <dt>&nbsp;</dt>
+        <dd><input type="submit" value="Enviar" /></dd>
+    </dl>
+</form>

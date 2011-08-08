@@ -1,0 +1,22 @@
+<h1>Importar CSV</h1>
+<p>
+    Para quitar o pagamento de várias pessoas ao mesmo tempo é necessário que
+    você forneça um arquivo no formato <a href="http://pt.wikipedia.org/wiki/Comma-separated_values">CSV</a>.
+    Este deve conter três informações na seguinte ordem: email, valor do
+    pagamento e data do pagamento.
+</p>
+<p>
+    A inclusão será feita desconsiderando os pagamentos que já foram quitados
+    anteriormente e os usuários que não existem no sistema.
+</p>
+
+<form method="post" enctype="multipart/form-data" action="<?php echo $this->baseUrl(); ?>/pagamentos/confirmcsv/">
+    <dl>
+        <dt><label for="csvfile">Arquivo CSV</label></dt>
+        <dd><input type="file" name="csvfile" id="csvfile" /></dd>
+    </dl>
+    <dl>
+        <dt>&nbsp;</dt>
+        <dd><input type="submit" value="Enviar" /></dd>
+    </dl>
+</form>

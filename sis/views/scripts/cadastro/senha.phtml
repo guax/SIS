@@ -1,0 +1,45 @@
+<?php
+$this->headScript()->appendFile($this->baseUrl() . '/javascript/prototype.js', $type = 'text/javascript', $attrs = array());
+$this->headScript()->appendFile($this->baseUrl() . '/javascript/jsvalidate.js', $type = 'text/javascript', $attrs = array());
+
+if(isset($this->mensagem)) {
+    echo "<p class='$this->msgclass' >$this->mensagem</p>";
+}
+?>
+
+<h1>Alterar senha</h1>
+<form method="post" action="<?=$this->baseUrl();?>/cadastro/senha" id="pass_form" onsubmit="return validate_senha();">
+    <dl>
+        <dt><label for="senha_atual">Senha Atual</label></dt>
+        <dd><input type="password" name="senha_atual" id="senha_atual" class="required validate-alphanum" /></dd>
+    </dl>
+
+    <dl>
+        <dt><label for="nova_senha">Nova Senha</label></dt>
+        <dd><input type="password" name="nova_senha" id="nova_senha" class="required validate-alphanum" /></dd>
+    </dl>
+    <dl>
+        <dt><label for="nova_senha_conf">Confirme Nova Senha</label></dt>
+        <dd><input type="password" name="nova_senha_conf" id="nova_senha_conf" class="required validate-alphanum" /></dd>
+    </dl>
+
+    <dl>
+        <dt>&nbsp;</dt>
+        <dd><input type="submit" value="Alterar" /></dd>
+    </dl>
+</form>
+
+<script>
+    validate_senha = function() {
+        if($('nova_senha').value != $('nova_senha_conf').value) {
+            $('nova_senha').addClassName('validation-failed-pass');
+            $('nova_senha_conf').addClassName('validation-failed-pass');
+            return false;
+        }
+        else {
+            $('nova_senha').removeClassName('validation-failed-pass');
+            $('nova_senha_conf').removeClassName('validation-failed-pass');
+            return true;
+        }
+    }
+</script>

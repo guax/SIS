@@ -1,0 +1,11 @@
+<?php
+if( $this->grupo == true ) { ?>
+<h1>Grupo</h1>
+<p>Você não pode cadastrar uma caravana por que já faz parte de um grupo de desconto.</p>
+<?php } else { ?>
+<h1>Caravana</h1>
+<p>Use o código abaixo para que os participantes se inscrevam como integrantes
+da sua caravana.</p>
+<?php } ?>
+
+<h2>Código: <span style="color:green"><?php echo $this->codigoCaravana;?></span></h2>

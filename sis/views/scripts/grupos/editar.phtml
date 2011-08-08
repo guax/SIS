@@ -1,0 +1,24 @@
+<?php
+$this->headScript()->appendFile($this->baseUrl() . '/javascript/prototype.js', $type = 'text/javascript', $attrs = array());
+$this->headScript()->appendFile($this->baseUrl() . '/javascript/jsvalidate.js', $type = 'text/javascript', $attrs = array());
+?>
+<h1>Editar Grupo de Usuários: <?php echo $this->grupo->getNome();?></h1>
+
+<form method="post" action="<?php echo $this->baseUrl(); ?>/grupos/editar/<?php echo $this->grupo->getId();?>">
+    <dl>
+        <dt><label for="descricao">Descrição</label></dt>
+        <dd><textarea name="descricao" id="descricao"><?php echo $this->grupo->getDescricao();?></textarea></dd>
+    </dl>
+    <dl>
+        <dt><label for="limite">N&ordm; Max. de Participantes</label></dt>
+        <dd><input type="text" name="limite" id="limite" value="<?php echo $this->grupo->getLimiteParticipantes();?>" class="required" /> <small>0 para ilimitado</small></dd>
+    </dl>
+    <dl>
+        <dt><label for="dataLimite">Data Limite</label></dt>
+        <dd><input type="text" name="dataLimite" id="dataLimite" value="<?php echo $this->grupo->getDataLimite() > 0?date("d/m/Y", $this->grupo->getDataLimite()):""; ?>" class="validate-date-au" /> <small>Formato: dd/mm/yyyy</small></dd>
+    </dl>
+    <dl>
+        <dt>&nbsp;</dt>
+        <dd><input type="submit" value="Enviar" /><input type="button" value="Cancelar" onclick="history.go(-1)" /></dd>
+    </dl>
+</form>

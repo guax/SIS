@@ -1,0 +1,11 @@
+Para instalar:
+    1) instale o banco de dados solisc.sql
+    2) Edite o sis/sis.ini
+    3) crie um link simbólico ou host virtual apontando para public/
+    4) chame o endereço no seu browser que corresponde ao public/
+    5) have fun.
+
+Notas:
+    Só funciona com MySQL
+    Você deve ter a função mail do php funcionando para que os usuários possam
+receber a confirmação da inscrição e a senha de acesso.

@@ -1,0 +1,19 @@
+<?php if( $this->valid ): ?>
+
+<h1>Verificação de Certificado</h1>
+
+<p>A SOLISC Associação Software Livre de Santa Catarina, confirma a emissão de certificado à</p>
+<h2><?php echo $this->name; ?></h2>
+<p>Por sua participação no 5º SoLiSC – Congresso Catarinense de Software Livre
+    realizado em Florianópolis, nos dias 22 e 23 de Outubro de 2010 totalizando
+    16 horas de atividades.</p>
+
+<?php else: ?>
+
+<h1>Certificado Inválido</h1>
+
+<p>O certificado de número <?php echo $this->id; ?> não consta como válido em nosso sistema</p>
+
+<?php endif; ?>
+
+<p>Em caso de dúvidas envie email para <a href="mailto:contato@solisc.org.br">contato@solisc.org.br</a></p>

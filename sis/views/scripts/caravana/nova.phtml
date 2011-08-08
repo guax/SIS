@@ -1,0 +1,22 @@
+<h1>Inscrição de Caravana</h1>
+
+<p>
+Regras  Gerais:
+</p>
+<ol>
+    <li>O líder de caravana é isento de inscrição</li>
+    <li>Os participantes têm 50% de desconto, mediante código promocional encaminhado pelo líder da caravana</li>
+    <li>Constitui uma caravana, a inscrição de pelo menos 5 participantes e que não residam na cidade de Florianópolis.</li>
+</ol>
+
+
+<form action="<?php echo $this->baseUrl();?>/caravana/confirmar" method="post">
+    <dl>
+        <dt><label for="cidade">Cidade da caravana</label></dt>
+        <dd><input type="text" name="cidade" id="cidade" value="<?php echo $this->cidadeParticipante;?>" /></dd>
+    </dl>
+    <dl>
+        <dt>&nbsp;</dt>
+        <dd><input type="submit" value="Inscrever Caravana" /></dd>
+    </dl>
+</form>

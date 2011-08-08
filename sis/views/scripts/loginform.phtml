@@ -1,0 +1,16 @@
+<h5>Login</h5>
+<form action="<?php echo $this->baseUrl(); ?>/auth/login" method="post">
+    <dl>
+        <dt><label for="email">E-Mail</label></dt>
+        <dd><input type="text" name="email" id="email" /></dd>
+
+        <dt><label for="senha">Senha</label></dt>
+        <dd><input type="password" name="senha" id="senha" /></dd>
+
+        <dt>&nbsp;</dt>
+        <dd>
+            <input type="submit" value="Entrar" />
+            <a href="<?php echo $this->baseUrl(); ?>/auth/recover" class="pass_recover">Esqueci minha senha</a>
+        </dd>
+    </dl>
+</form>

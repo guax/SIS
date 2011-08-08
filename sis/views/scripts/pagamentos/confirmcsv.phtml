@@ -1,0 +1,42 @@
+<h1>Dados do CSV</h1>
+<p>
+    Para confirmar a inclusão do csv, verifique os dados da importação mostrados
+    abaixo.
+</p>
+<p>
+    Entradas que tiverem o icone de erro (<img src="<?php echo $this->baseUrl(); ?>/images/exclamation.png" alt="erro" />)
+    não foram encontradas no sistema para quitação e não serão processadas.
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Indice</th>
+            <th>e-Mail</th>
+            <th>Valor Pagamento</th>
+            <th>Data Pagamento</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php $index = 1; foreach( $this->dados as $cliente ): ?>
+        <tr>
+            <td><?php echo $index;?></td>
+            <td>
+                <?php if( !$cliente[3] ): ?>
+                <img src="<?php echo $this->baseUrl(); ?>/images/exclamation.png" alt="erro" />
+                <?php
+                endif;
+                echo $cliente[0];
+                ?>
+            </td>
+            <td><?php echo sprintf("R$ %.2f", $cliente[1]);?></td>
+            <td><?php echo $cliente[2];?></td>
+        </tr>
+        <?php $index++; endforeach; ?>
+    </tbody>
+</table>
+
+<p>
+    <a href="<?php echo $this->baseUrl(); ?>/pagamentos/processcsv/"><input type="button" value="Confirmar" /></a>
+    <a href="<?php echo $this->baseUrl(); ?>/pagamentos/importcsv/"><input type="button" value="Cancelar" /></a>
+</p>
