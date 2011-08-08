@@ -3,8 +3,9 @@ Sistema de Inscrição Solisc (SIS)
 
 Classes sem informação da tag @author nos cabeçalhos foram escritas pelos
 colaboradores principais desse projeto:
-    Henrique Grolli Bassotto <henrique.grolli@gmail.com>
-    Alexandre Machado <axmachado@gmail.com>
+
+    * Henrique Grolli Bassotto <henrique.grolli@gmail.com>
+    * Alexandre Machado <axmachado@gmail.com>
 
 De nenhuma forma esse software será suportado ou terá garantias de funcionamento.
 Leia o texto em LICENSE para maiores informações. Caso não consiga compreender
